@@ -7,7 +7,10 @@ const bookRoutes = require('./routes/books');
 const loanRoutes = require('./routes/loans');
 
 const app = express();
+const cors = require("cors");
+app.use(cors());
 app.use(express.json());
+
 
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);

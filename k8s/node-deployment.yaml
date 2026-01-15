@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-api
+  template:
+    metadata:
+      labels:
+        app: node-api
+    spec:
+      containers:
+        - name: node-api
+          image: gcr.io/kubernetes-tp-481711/nodejs-api:1.0
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: db-secret
